@@ -1,83 +1,57 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // Função para obter a hora no fuso horário especificado
-    function getTimeInTimeZone(timeZone) {
-      const options = {
-        timeZone: timeZone,
-        hour12: true,
-        hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric'
-      };
-      return new Date().toLocaleTimeString('pt-BR', options);
-    }
-  
-    // Função para buscar e exibir as recomendações
-    function executeSearch() {
-      const query = document.getElementById("searchInput").value.toLowerCase();
-      const keywords = ['praia', 'templo', 'país'];
-      
-      if (keywords.some(keyword => query.includes(keyword))) {
-        displayRecommendations(query);
-      } else {
-        alert('Nenhuma recomendação encontrada para essa palavra-chave.');
-      }
-    }
-  
-    // Função para exibir as recomendações com base na palavra-chave
-    function displayRecommendations(query) {
-      const resultsContainer = document.getElementById("resultsContainer");
-      resultsContainer.innerHTML = ""; // Limpa os resultados anteriores
-  
-      // Buscar dados do arquivo JSON (exemplo fictício)
-      fetch('travel_recommendation_api.json')
-        .then(response => response.json())
-        .then(data => {
-          const filteredResults = data.recommendations.filter(recommendation =>
-            recommendation.category.toLowerCase() === query
-          );
-  
-          if (filteredResults.length > 0) {
-            filteredResults.forEach(recommendation => {
-              const recommendationDiv = document.createElement("div");
-              recommendationDiv.classList.add("recommendation");
-              
-              const img = document.createElement("img");
-              img.src = recommendation.imageUrl;
-              img.alt = recommendation.name;
-              
-              const name = document.createElement("h3");
-              name.textContent = recommendation.name;
-              
-              const description = document.createElement("p");
-              description.textContent = recommendation.description;
-              
-              const time = document.createElement("p");
-              time.textContent = `Hora local: ${getTimeInTimeZone(recommendation.timeZone)}`;
-  
-              recommendationDiv.appendChild(img);
-              recommendationDiv.appendChild(name);
-              recommendationDiv.appendChild(description);
-              recommendationDiv.appendChild(time);
-  
-              resultsContainer.appendChild(recommendationDiv);
-            });
-          } else {
-            resultsContainer.innerHTML = "<p>Nenhuma recomendação encontrada.</p>";
-          }
-        })
-        .catch(error => {
-          console.error("Erro ao buscar dados:", error);
-          resultsContainer.innerHTML = "<p>Erro ao buscar recomendações.</p>";
-        });
-    }
-  
-    // Configurar evento de clique para o botão de pesquisa
-    document.getElementById("searchButton").addEventListener("click", executeSearch);
-  
-    // Configurar evento de clique para o botão de limpar
-    document.getElementById("clearButton").addEventListener("click", () => {
-      document.getElementById("searchInput").value = "";
-      document.getElementById("resultsContainer").innerHTML = "";
+// Atualiza o relógio
+function updateClock() {
+  const clockElement = document.getElementById('clock');
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+  clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+} 
+
+
+// Inicializa o relógio
+setInterval(updateClock, 1000);
+updateClock();
+
+// Funções de busca
+function executeSearch() {
+  alert('Funcionalidade de busca em desenvolvimento.');
+}
+
+function clearResults() {
+  document.getElementById('searchInput').value = '';
+  alert('Resultados limpos.');
+}
+ // Adicionando animação ao aparecer
+const aboutItems = document.querySelectorAll('.about-item');
+
+window.addEventListener('scroll', () => {
+    const triggerBottom = window.innerHeight / 5 * 4;
+
+    aboutItems.forEach(item => {
+        const boxTop = item.getBoundingClientRect().top;
+
+        if (boxTop < triggerBottom) {
+            item.classList.add('fade-in');
+        } else {
+            item.classList.remove('fade-in');
+        }
     });
-  });
-  
+});
+ 
+// Adicionando funcionalidade ao formulário
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // Impede o envio padrão do formulário
+
+  // Coletando os dados do formulário
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+  const date = document.getElementById('date').value;
+
+  // Exibindo os dados em um alerta (ou você pode enviar para um servidor)
+  alert(`Nome: ${name}\nE-mail: ${email}\nMensagem: ${message}\nData: ${date}`);
+
+  // Limpa o formulário após o envio
+  this.reset();
+});

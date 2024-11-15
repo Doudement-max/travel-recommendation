@@ -2,138 +2,108 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Recomendações de Viagem</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Estilos básicos */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        nav {
-            display: flex;
-            justify-content: space-between;
-            background-color: #333;
-            padding: 1rem;
-            align-items: center;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 1rem;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-        }
-        .search-bar {
-            display: flex;
-            gap: 0.5rem;
-        }
-        main {
-            padding: 2rem;
-        }
-        #results .recommendation {
-            border: 1px solid #ddd;
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Recommendation - Recomendações de Viagem</title>
+    <link rel="stylesheet" href="travel_recommendation.css">
 </head>
 <body>
+   <!-- Barra de navegação -->
+<nav>
+    <div class="logo-container">
+        <img src="https://i.pinimg.com/474x/d8/1c/06/d81c061ce31dcb2b56fa13a1fd0d1d8a.jpg" alt="Logo do Avião" class="logo">
+        <span class="site-name">Travel Recommendation</span>
+    </div>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">Sobre Nós</a></li>
+        <li><a href="#contact">Contato</a></li>
+    </ul>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Pesquisar destinos...">
+        <button onclick="executeSearch()">Pesquisar</button>
+        <button onclick="clearResults()">Limpar</button>
+    </div>
+    <div class="clock" id="clock"></div>
+</nav>
 
-    <!-- Barra de navegação -->
-    <nav>
-        <img src="path_to_your_logo.png" alt="Logo" style="width: 50px; height: auto;">
-        <ul>
-            <li><a href="#home">Página Inicial</a></li>
-            <li><a href="#about">Sobre Nós</a></li>
-            <li><a href="#contact">Contato</a></li>
-        </ul>
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Pesquisar recomendações...">
-            <button onclick="executeSearch()">Pesquisar</button>
-            <button onclick="clearResults()">Redefinir</button>
+    <!-- Carrossel -->
+    <div class="carousel">
+        <div class="carousel-image" style="background-image: url('https://images.pexels.com/photos/29415306/pexels-photo-29415306.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+        <div class="carousel-image" style="background-image: url('https://images.pexels.com/photos/2300342/pexels-photo-2300342.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+        <div class="carousel-image" style="background-image: url('https://images.pexels.com/photos/1797195/pexels-photo-1797195.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+    </div>
+
+    <!-- Seção Home -->
+<main id="home" class="content-section">
+    <h1>Bem-vindo à Travel Recommendation</h1>
+    <p>Encontre recomendações incríveis de destinos para suas próximas férias!</p>
+
+    <h2>Dicas de Viagem</h2>
+    <div class="tips-container">
+        <div class="tip-item">
+            <img src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Dica 1" class="tip-image">
+            <h3>Planeje com Antecedência</h3>
+            <p>Reserve seus voos e acomodações com antecedência para garantir os melhores preços e disponibilidade.</p>
         </div>
-    </nav>
-
-    <!-- Conteúdo da página inicial -->
-    <main id="home">
-        <h1>Bem-vindo ao nosso site de Recomendações de Viagem</h1>
-        <p>Encontre as melhores recomendações de destinos para praias, templos e muito mais!</p>
-    </main>
+        <div class="tip-item">
+            <img src="https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Dica 2" class="tip-image">
+            <h3>Pesquise Destinos</h3>
+            <p>Pesquise sobre os destinos que você deseja visitar e descubra as melhores épocas para viajar.</p>
+        </div>
+        <div class="tip-item">
+            <img src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Dica 3" class="tip-image">
+            <h3>Considere Pacotes de Viagem</h3>
+            <p>Agências de viagens frequentemente oferecem pacotes que podem economizar tempo e dinheiro.</p>
+        </div>
+    </div>
+</main>
 
     <!-- Seção Sobre Nós -->
-    <section id="about">
+    <section id="about" class="content-section">
         <h2>Sobre Nós</h2>
-        <p>Somos uma equipe apaixonada por viagens e descobertas.</p>
-        <h3>Nossa Equipe</h3>
-        <ul>
-            <li>Nome: João Silva - Função: CEO</li>
-            <li>Nome: Maria Souza - Função: Diretora de Marketing</li>
-            <li>Nome: Pedro Oliveira - Função: Diretor de Tecnologia</li>
-        </ul>
+        <p>Na Travel Recommendation, acreditamos que cada viagem deve ser uma experiência inesquecível. Nossa equipe é apaixonada por ajudar você a descobrir os melhores destinos e criar memórias duradouras.</p>
+
+        <div class="about-container">
+            <div class="about-item" id="mission">
+                <h3>Nossa Missão</h3>
+                <p>Proporcionar experiências de viagem personalizadas e inesquecíveis para todos os nossos clientes.</p>
+            </div>
+            <div class="about-item" id="vision">
+                <h3>Nossa Visão</h3>
+                <p>Ser a principal plataforma de recomendações de viagem, reconhecida pela qualidade e pela personalização de nossos serviços.</p>
+            </div>
+            <div class="about-item" id="values">
+                <h3>Nossos Valores</h3>
+                <ul>
+                    <li>Inovação</li>
+                    <li>Qualidade</li>
+                    <li>Transparência</li>
+                    <li>Compromisso com o cliente</li>
+                </ul>
+            </div>
+            <div class="about-item" id="history">
+                <h3>Nossa História</h3>
+                <p>Fundada em 2020, a Travel Recommendation começou como um pequeno projeto de amigos apaixonados por viagens e cresceu para se tornar uma referência no setor.</p>
+            </div>
+        </div>
     </section>
 
-    <!-- Seção de Contato -->
-    <section id="contact">
-        <h2>Fale Conosco</h2>
-        <form id="contactForm">
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Mensagem:</label>
-            <textarea id="message" name="message" required></textarea>
-            
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
+   <!-- Seção de Contato -->
+<section id="contact" class="content-section">
+    <h2>Contato</h2>
+    <form id="contactForm">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required>
 
-    <!-- Seção de Resultados -->
-    <section id="results">
-        <h2>Resultados da Pesquisa</h2>
-    </section>
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
 
-    <!-- JSON Inline para simular travel_recommendation_api.json -->
-    <script>
-        const travelData = [
-            {
-                "name": "Praia do Forte",
-                "category": "praia",
-                "imageUrl": "praia_forte.jpg",
-                "description": "Uma linda praia tropical com águas cristalinas.",
-                "timeZone": "America/Bahia"
-            },
-            {
-                "name": "Templo da Paz",
-                "category": "templo",
-                "imageUrl": "templo_paz.jpg",
-                "description": "Um templo tranquilo e pacífico, perfeito para meditação.",
-                "timeZone": "Asia/Tokyo"
-            },
-            {
-                "name": "Copacabana",
-                "category": "praia",
-                "imageUrl": "copacabana.jpg",
-                "description": "Uma das praias mais famosas do mundo, localizada no Rio de Janeiro.",
-                "timeZone": "America/Sao_Paulo"
-            },
-            {
-                "name": "Templo do Sol",
-                "category": "templo",
-                "imageUrl": "templo_sol.jpg",
-                "description": "Um antigo templo localizado nas montanhas sagradas.",
-                "timeZone": "Asia/Kolkata"
-            }
-        ];
-    </script>
+        <label for="message">Mensagem:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
 
-    <!-- Incluir o arquivo JavaScript -->
-    <script src="script.js"></script>
-</body>
-</html>
+        <label for="date">Data:</label>
+        <input type="date" id="date" name="date" required>
 
+        <button type="submit">Enviar</button>
+    </form>
+</section>
